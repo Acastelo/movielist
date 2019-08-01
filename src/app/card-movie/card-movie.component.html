@@ -1,0 +1,16 @@
+<div class="card mb-3" color="gray">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img [src]="getImagePath()" alt="">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{movie?.title}}</h5>
+                <p class="card-text"><small class="text-muted">{{movie?.original_title}}</small></p>
+                <p class="card-text">{{movie?.overview}}</p>
+                <p><small class="text-muted m-1" *ngFor="let genre of movie?.genres">{{genre.name}}</small></p>
+                
+            </div>
+        </div>
+    </div>
+</div>
