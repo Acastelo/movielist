@@ -1,0 +1,9 @@
+#poster {
+    width: 9.9rem;
+    max-height: 14rem;
+}
+
+#card-movie {
+    width: 10rem;
+    min-height: 17rem
+}

@@ -2,12 +2,11 @@
 <div class="container">
   <h1 class="text-center">Movie List</h1>
 
-  <div class="form-group row">
-    <label for="search" class="col-form-label">Search Movie</label>
-    <input type="text" id="search" placeholder="Search Movie" class="form-control">
-    <button class="btn btn-dark mb-2">Search</button>
+  <div class="form-inline">
+    <input class="col-9 mb-2 form-control" type="text" id="search" placeholder="Search Movie">
+    <button class="btn btn-dark mb-2 ml-sm-2 col-2">Search</button>
   </div>
 
-  <app-card-movie></app-card-movie>
+  <router-outlet></router-outlet>
 </div>
 
