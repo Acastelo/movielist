@@ -16,16 +16,20 @@ export class CardMovieService {
 
   }
 
-  getConfiguration(){
+  getConfiguration() {
     return this.http.get(`${API}configuration?api_key=${this.apiKey}`);
   }
 
-  getMovieById (movie_id){
+  getMovieById (movie_id: any) {
     return this.http.get(`${API}movie/${movie_id}?api_key=${this.apiKey}&language=${this.lang}`);
   }
 
-  getTopRated(){
-    return this.http.get(`${API}movie/top_rated?api_key=${this.apiKey}&language=${this.lang}&page=1`);
+  getTopRated () {
+    return this.http.get(`${API}movie/top_rated?api_key=${this.apiKey}&language=${this.lang}&page=3`);
+  }
+
+  getMovieByName (query: string) {
+    return this.http.get(`${API}search/movie?api_key=${this.apiKey}&language=${this.lang}&query=${query}&page=3&include_adult=false`);
   }
   
 }

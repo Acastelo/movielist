@@ -9,6 +9,8 @@ import { CardMovieService } from '../card-movie.service';
 export class MovieListComponent implements OnInit {
   public latests: any;
   public conf: any;
+  public search: string;
+  public textTitle= "Melhores Filmes";
 
   constructor(public cardMovieService: CardMovieService) { }
 
@@ -22,11 +24,19 @@ export class MovieListComponent implements OnInit {
     this.cardMovieService.getTopRated().subscribe(data => {
       this.latests = data;
       console.log(this.latests);
-    })
+    });
+
   }
 
   getImagePath() {
     return `${this.conf.images.base_url}w154`;
+  };
+
+  searchMovieByName() {
+    this.textTitle = `Pesquisando por: ${this.search}`;
+    this.cardMovieService.getMovieByName(this.search).subscribe(data => {
+      this.latests = data;
+    });
   };
 
 }
