@@ -7,7 +7,7 @@
 
 <div class="row">
     <div *ngFor="let movie of latests?.results">
-            <div id="card-movie" class="card mx-1 mb-2">
+            <div id="card-movie" class="card mx-1 mb-2" (click)="indexClick = movie.id">
                     <img id="poster" [src]="getImagePath() + movie.poster_path" [alt]="movie.title">
                     <p class="card-text text-center text-wrap">
                             {{movie.title}}
@@ -15,3 +15,5 @@
             </div>
     </div>
 </div>
+
+{{indexClick}}

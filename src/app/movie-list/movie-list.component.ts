@@ -11,6 +11,7 @@ export class MovieListComponent implements OnInit {
   public conf: any;
   public search: string;
   public textTitle= "Melhores Filmes";
+  public indexClick: any;
 
   constructor(public cardMovieService: CardMovieService) { }
 
