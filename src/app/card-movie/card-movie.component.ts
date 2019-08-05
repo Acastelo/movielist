@@ -21,14 +21,14 @@ export class CardMovieComponent implements OnInit {
 
     this.conf = JSON.parse(localStorage.getItem("config"));
 
-    this.cardMovieService.getMovieById(100).subscribe(data => {
+    this.movie = JSON.parse(localStorage.getItem("movieToCard"));
+    /* this.cardMovieService.getMovieById(100).subscribe(data => {
       this.movie = data;
       console.log(this.movie);
-    });
+    }); */
 
     this.cardMovieService.getTopRated().subscribe(data => {
       this.latest = data;
-      console.log(this.latest);
     });
 
   }

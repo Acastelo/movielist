@@ -25,11 +25,18 @@ export class CardMovieService {
   }
 
   getTopRated () {
-    return this.http.get(`${API}movie/top_rated?api_key=${this.apiKey}&language=${this.lang}&page=3`);
+    return this.http.get(`${API}movie/popular?api_key=${this.apiKey}&language=${this.lang}&page=1`);
   }
 
   getMovieByName (query: string) {
     return this.http.get(`${API}search/movie?api_key=${this.apiKey}&language=${this.lang}&query=${query}&page=3&include_adult=false`);
   }
   
+  getGenres() {
+    return this.http.get(`${API}genre/movie/list?api_key=${this.apiKey}&language=${this.lang}`);
+  }
+
+  getMovieByGenre (genreId: string) {
+    return this.http.get(`${API}discover/movie?api_key=${this.apiKey}&language=${this.lang}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}`);
+  }
 }
