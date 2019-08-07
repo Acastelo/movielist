@@ -28,6 +28,7 @@ export class MovieListComponent implements OnInit {
 
     this.cardMovieService.getGenres().subscribe(data => {
       this.genres = [...data["genres"]];
+      localStorage.setItem('movieGenres', JSON.stringify(this.genres));
     });
 
   }
@@ -47,13 +48,11 @@ export class MovieListComponent implements OnInit {
     this.cardMovieService.getMovieByGenre(genreId).subscribe(data => {
       this.latests = data;
       console.log(this.latests);
-    })
-  }
+    });
+  };
 
   sendMovieToCard(movie) {
     localStorage.setItem('movieToCard', JSON.stringify(movie));
   };
-
-
 
 }

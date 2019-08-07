@@ -11,6 +11,7 @@ export class CardMovieComponent implements OnInit {
   public movie: any;
   public conf: any;
   public latest: any;
+  public genres: any;
 
   constructor(public cardMovieService: CardMovieService) { }
 
@@ -20,12 +21,8 @@ export class CardMovieComponent implements OnInit {
     });
 
     this.conf = JSON.parse(localStorage.getItem("config"));
-
     this.movie = JSON.parse(localStorage.getItem("movieToCard"));
-    /* this.cardMovieService.getMovieById(100).subscribe(data => {
-      this.movie = data;
-      console.log(this.movie);
-    }); */
+    this.genres = JSON.parse(localStorage.getItem("movieGenres"));
 
     this.cardMovieService.getTopRated().subscribe(data => {
       this.latest = data;
