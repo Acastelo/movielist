@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-accessibility-bar',
@@ -7,10 +7,97 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   styleUrls: ['./accessibility-bar.component.css']
 })
 export class AccessibilityBarComponent implements OnInit {
+  private elementos = new Array({
+    tag: 'body'
+  });
+  
+  private maxFontSize = 4.0;
+  private minFontSize = -4.0;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  resetFont() {
+    let fontSize = 0;
+
+    if (sessionStorage.getItem('fontSize')) {
+      fontSize = parseFloat(sessionStorage.getItem('fontSize'));
+    }
+
+    while (fontSize < 0.0) {
+      this.elementos.forEach(element => {
+        this.changeFontSize(element.tag, "ASC");
+      });
+
+      fontSize++;
+    }
+
+    while (fontSize > 0.0) {
+      this.elementos.forEach(element => {
+        this.changeFontSize(element.tag, "DESC");
+      });
+
+      fontSize--;
+    }
+
+    sessionStorage.setItem('fontSize', fontSize.toString());
+  }
+
+  increaseFont() {
+    let fontSize = 0;
+
+    if (sessionStorage.getItem('fontSize')) {
+      fontSize = parseFloat(sessionStorage.getItem('fontSize'));
+    }
+
+    if (fontSize < this.maxFontSize) {
+     this.elementos.forEach(element => {
+        this.changeFontSize(element.tag, "ASC");
+      });
+
+      ++fontSize;
+    }
+
+    sessionStorage.setItem('fontSize', fontSize.toString());
+  }
+
+  decreaseFont() {
+    let fontSize = 0;
+
+    if (sessionStorage.getItem('fontSize')) {
+      fontSize = parseFloat(sessionStorage.getItem('fontSize'));
+    }
+
+    if (fontSize > this.minFontSize) {
+      this.elementos.forEach(element => {
+        this.changeFontSize(element.tag, "DES")
+      });
+
+      --fontSize;
+    }
+
+    sessionStorage.setItem('fontSize', fontSize.toString());
+  }
+
+  changeFontSize(tag, order) {
+    let elements = document.getElementsByTagName(tag);
+
+    for (let i = 0; i< elements.length; i++) {
+      let element = document.getElementsByTagName(tag)[i];
+
+      let fontString = window.getComputedStyle(element, null).getPropertyValue('font-size');
+      let fontNumber = parseFloat(fontString);
+
+      if (order == "ASC") {
+        fontNumber++;
+      } else {
+        fontNumber--;
+      }
+      
+      element.style.fontSize = fontNumber.toString() + 'px';
+    }
+  }
+  
 }

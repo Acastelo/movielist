@@ -4,8 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
+
 
 import { AppComponent } from './app.component';
 import { CardMovieComponent } from './card-movie/card-movie.component';
@@ -30,10 +29,10 @@ const routes= [
     NgbModule,
     HttpClientModule,
     FormsModule,
-    FontAwesomeModule,
     RouterModule.forRoot(routes)
   ],
   providers: [CardMovieService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+}

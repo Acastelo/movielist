@@ -7,10 +7,13 @@
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title">{{movie?.title}}</h5>
-                    <p class="card-text"><small class="text-muted">{{movie?.original_title}}</small></p>
+                    <div class="row">
+                        <p class="card-text col-lg-10"><small class="text-muted">{{movie?.original_title}}</small></p>
+                        <p class="card-text">{{movie?.vote_average}}</p>
+                        <small><span id="star" class="fas fa-star"></span></small>
+                    </div>
                     <p class="card-text text-justify">{{movie?.overview}}</p>
                     <p><small class="text-muted m-1" *ngFor="let genre of movie?.genres">{{genre.name}}</small></p>
-                    {{movie | json }}
                 </div>
             </div>
         </div>
