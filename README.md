@@ -1,6 +1,7 @@
 # MovieList
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0. it's use the MovieDB API, to search movies by ID, by name and by genres. When you click in the card of a movie, it's shows more information about the movie, like: Title in the selected language, original_title, summary and rate.
+Was implemeted in this project accessible elements like: high contrast and increase and decrease font.
 
 ## Development server
 
