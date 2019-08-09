@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { element } from 'protractor';
+import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-accessibility-bar',
@@ -7,9 +9,13 @@ import { element } from 'protractor';
   styleUrls: ['./accessibility-bar.component.css']
 })
 export class AccessibilityBarComponent implements OnInit {
-  private elementos = new Array({
-    tag: 'body'
-  });
+  private elementos = new Array(
+    { tag: 'body' },
+    { tag: 'h1' },
+    { tag: 'h3'},
+    { tag: 'button' },
+    { tag: 'input' }
+  );
   
   private maxFontSize = 4.0;
   private minFontSize = -4.0;
@@ -97,6 +103,30 @@ export class AccessibilityBarComponent implements OnInit {
       }
       
       element.style.fontSize = fontNumber.toString() + 'px';
+    }
+  }
+
+  changeHighConstrast() {
+    let status = sessionStorage.getItem('altoContraste');
+    let element: HTMLElement = document.getElementById("main") as HTMLElement;
+    if (status == "true") {
+      sessionStorage.setItem('altoContraste', "false");
+      status = "false"
+      
+      element.classList.remove("high-contrast-login");
+      element.classList.remove("high-contrast");
+
+      $('#iframe').contents().find('body').removeClass('auto-contraste');
+
+    } else{
+      sessionStorage.setItem('altoContraste', "true");
+      status = "true"
+      
+      element.classList.remove("high-contrast-login");
+      element.classList.add("high-contrast");
+
+      $('#iframe').contents().find('body').addClass('auto-contraste');
+
     }
   }
   

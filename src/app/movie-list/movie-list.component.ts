@@ -38,10 +38,22 @@ export class MovieListComponent implements OnInit {
   };
 
   searchMovieByName() {
-    this.textTitle = `Pesquisando por: ${this.search}`;
-    this.cardMovieService.getMovieByName(this.search).subscribe(data => {
-      this.latests = data;
-    });
+    if (this.search) {
+      this.textTitle = `Pesquisando por: ${this.search}`;
+      this.cardMovieService.getMovieByName(this.search).subscribe(data => {
+        this.latests = data;
+  
+        if (this.latests) {
+          this.textTitle = `Nenhum resgistro encontrado para: ${this.search}`;
+        }
+      });
+      
+    } else {
+      this.cardMovieService.getTopRated().subscribe(data => {
+        this.latests = data;
+      });
+    }
+
   };
 
   searchMovieByGenres(genreId) {

@@ -25,6 +25,7 @@
             ],
             "styles": [
               "src/styles.css",
+              "src/high-contrast.sass",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
